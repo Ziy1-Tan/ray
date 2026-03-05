@@ -513,6 +513,28 @@ class DeploymentSchema(BaseModel, allow_population_by_field_name=True):
 
         return values
 
+    @root_validator
+    def validate_autoscaling_config_fields(cls, values):
+        """Check that deployment-level fields aren't placed inside autoscaling_config."""
+        autoscaling_config = values.get("autoscaling_config", None)
+
+        # Skip if autoscaling_config is not set or is DEFAULT.VALUE
+        if autoscaling_config in [None, DEFAULT.VALUE]:
+            return values
+
+        # Fields that should NOT be inside autoscaling_config
+        invalid_fields = ["max_ongoing_requests"]
+
+        for f in invalid_fields:
+            if f in autoscaling_config:
+                raise ValueError(
+                    f"'{f}' must be at deployment level, not inside "
+                    f"'autoscaling_config'. Move it to the same level as "
+                    f"'autoscaling_config' in your config."
+                )
+
+        return values
+
     def _get_user_configured_option_names(self) -> Set[str]:
         """Get set of names for all user-configured options.
 
