@@ -21,11 +21,10 @@ uvx ruff check python/ray/llm/       # lint
 - **PR 格式**: `[Module] Short description`
 - **测试**: PR 必须包含测试，无测试不合并
 - **Pre-commit**: 提交前必须 `pre-commit run --all-files`
+- **Code Review**: 提交 PR 前必须进行多轮 code review，直到不存在 P0 问题方可提交
 - **Issue 评分**: Bugfix(+3) > Enhancement > Feature | 小规模(+2) | 独立模块(+2) | Good First Issue(+2)
 - **Worktree 隔离**: 使用 `git worktree` 隔离多任务开发
 - **Worktree 基准**: 所有 worktree 必须基于 `~/github/ray`（SSH 协议），而非 `~/.config/superpowers/worktrees/` 中的 fork/master
-  - `~/.config/superpowers/worktrees/ray-project/` 下所有 worktree 必须来自 `~/github/ray` master 分支
-  - 每次 `git worktree add` 前确认基准：`cd ~/github/ray && git worktree add ... master`
 
 ## 架构概览
 
