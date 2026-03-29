@@ -43,6 +43,8 @@ uv pip install -r python/deplocks/llm/rayllm_test_py311_cpu.lock --index-strateg
 - 选题结论、模块判断、maintainer 模式只写在 `RESEARCH.md`
 - `CONTRIBUTING.md` 只讲怎么做，不重复实时进度
 - 如果多个文档冲突，以 `PROGRESS.md` 的状态和对应 issue 作战卡为准
+- 仓库根目录长期停在 `local/master`，用于跟踪你本地的 `AGENTS.md` 和个人工作流
+- 所有 PR worktree 一律从 `upstream/master` 拉出，不从 `local/master` 拉
 
 ## 执行顺序
 
