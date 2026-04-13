@@ -145,7 +145,7 @@ class FailingDeploymentActor:
 
 
 @ray.remote
-class DeploymentContextActor:
+class DeploymentActorContextActor:
     """Reads deployment actor runtime context for testing."""
 
     def get_context(self):
@@ -1312,7 +1312,7 @@ def test_get_deployment_actor_context_returns_runtime_metadata(serve_instance):
         deployment_actors=[
             DeploymentActorConfig(
                 name="ctx_actor",
-                actor_class=DeploymentContextActor,
+                actor_class=DeploymentActorContextActor,
             ),
         ],
     )
